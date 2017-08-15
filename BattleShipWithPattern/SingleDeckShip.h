@@ -6,7 +6,7 @@ class SingleDeckShip :
 public:
 	SingleDeckShip();
 	~SingleDeckShip();
-protected:
+
 	list<int> CoordinateShip;
 };
 

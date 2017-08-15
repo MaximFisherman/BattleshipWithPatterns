@@ -13,7 +13,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <algorithm>
-#include "GlobalVariables.h"
+#include <vector>
 
 
 

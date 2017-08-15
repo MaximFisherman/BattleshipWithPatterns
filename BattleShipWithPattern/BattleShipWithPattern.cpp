@@ -7,7 +7,6 @@
 int main()
 {
 	Field fi;
-	fi.shipArrangement();
 	system("pause");
     return 0;
 }

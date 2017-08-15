@@ -1,4 +1,8 @@
 #pragma once
-static const char SYMB_SHIP = '#';
-static const int SIZE_FIELD = 10;
-char field[SIZE_FIELD][SIZE_FIELD];
+#ifndef __GLOBALS_H__
+#define __GLOBALS_H__
+#include <vector>
+
+	const char SYMB_SHIP = '#';
+	const int SIZE_FIELD = 10;
+#endif

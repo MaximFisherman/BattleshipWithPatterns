@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "ShipArrangemen.h"
 
-
-bool ShipArrangemen::PlacingShip
+void ShipArrangemen::SetSingleDeck(Field* field)
+{
+	cout << "SetSingleDeck"<<endl;
+}
+/*bool ShipArrangemen::PlacingShip
 (
 	int         size,
 	bool        isHoriz,
@@ -41,4 +44,4 @@ bool ShipArrangemen::PlacingShip
 		}
 		return  true;
 	}
-}
+}*/
