@@ -6,7 +6,9 @@
 
 int main()
 {
-	Field fi;
+	Field field;
+	field.shipArrangement();
+	field.ViewField();
 	system("pause");
     return 0;
 }

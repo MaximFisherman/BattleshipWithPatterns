@@ -1,10 +1,12 @@
 #pragma once
 #include "ShipArrangemen.h"
 class SetThreeDeckShip :
-	public ShipArrangemen
+	public StateField
 {
 public:
-	SetThreeDeckShip();
+	SetThreeDeckShip(Field* field);
+	void ShipThreeDeckArrangement(int size, char field[][SIZE_FIELD], vector<int>* CoordinateShip);
+
 	~SetThreeDeckShip();
 };
 

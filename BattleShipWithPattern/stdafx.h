@@ -14,6 +14,8 @@
 #include <stdlib.h>
 #include <algorithm>
 #include <vector>
+#include <time.h>
+#include "GlobalVariables.h"
 
 
 

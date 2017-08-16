@@ -2,13 +2,18 @@
 #include "SetFourDeckShip.h"
 
 
-SetFourDeckShip::SetFourDeckShip()
+SetFourDeckShip::SetFourDeckShip(Field* fieldClass)
 {
+	//add ship FourDeck on board
+	for (int i = 0; i < 1; ++i)
+	{
+		ShipFourDeckArrangement(4, fieldClass->field, &fieldClass->CoordinateFourDeckShip);
+	}
 }
 
-/*
-void  SetFourDeckShip::ShipFourDeckArrangement(int  size, char  field[][SIZE_FIELD])
+void  SetFourDeckShip::ShipFourDeckArrangement(int  size, char  field[][SIZE_FIELD], vector<int>* CoordinateShip)
 {
+	srand(time(NULL));
 	bool  isHoris = rand() % 2 == 0;//If rand() % 2 == 0 return true 
 	int   rowTop = 0;
 	int   colLeft = 0;
@@ -24,16 +29,23 @@ void  SetFourDeckShip::ShipFourDeckArrangement(int  size, char  field[][SIZE_FIE
 
 		do
 		{
-			colLeft = rand() % SIZE_FIELD;// get random size cell width size 
+			colLeft = rand() % SIZE_FIELD;// get random size cell width size
 		} while (isHoris
 			&& colLeft > SIZE_FIELD - size);
+
 	} while (!PlacingShip(size, isHoris, rowTop, colLeft, field));
+
+	
 
 	if (isHoris)
 	{
 		for (int j = colLeft; j < colLeft + size; ++j)
 		{
-			field[rowTop][j] = SYMB_SHIP;//Centering horizontally 
+			field[rowTop][j] = SYMB_SHIP;//Centering horizontally
+			
+			//Add coordinate to vector 
+			CoordinateShip->push_back(j);
+			CoordinateShip->push_back(rowTop);
 		}
 	}
 	else
@@ -41,10 +53,13 @@ void  SetFourDeckShip::ShipFourDeckArrangement(int  size, char  field[][SIZE_FIE
 		for (int i = rowTop; i < rowTop + size; ++i)
 		{
 			field[i][colLeft] = SYMB_SHIP;// Centering vertical
+			
+			//Add coordinate to vector 
+			CoordinateShip->push_back(colLeft);
+			CoordinateShip->push_back(i);
 		}
 	}
 }
-*/
 SetFourDeckShip::~SetFourDeckShip()
 {
 }
