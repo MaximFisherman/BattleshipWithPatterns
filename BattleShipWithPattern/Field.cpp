@@ -7,12 +7,30 @@
 
 Field::Field()
 {
-	//Initialization field
+	//Initialization fieldUser
 	for (int i = 0; i < SIZE_FIELD; i++)
 	{
 		for (int j = 0; j < SIZE_FIELD; j++)
 		{
-			field[i][j] = '*';
+			fieldUser[i][j] = '*';
+		}
+	}
+
+	//Initialization fieldEnemy
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			fieldEnemy[i][j] = '*';
+		}
+	}
+
+	//Initialization hiddenFieldEnemy
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			hiddenFieldEnemy[i][j] = '0';
 		}
 	}
 }
@@ -25,18 +43,41 @@ void Field::shipArrangement()
 	current = new SetSingleDeckShip(this);
 }
 
-void Field::ViewField()
+void Field::ViewFieldUser()
 {
 	for (int i = 0; i < SIZE_FIELD; i++)
 	{
 		for (int j = 0; j < SIZE_FIELD; j++)
 		{
-			cout << " " << field[i][j];
+			cout << " " << fieldUser[i][j];
 		}
 		cout << endl;
 	}
 }
 
+void Field::ViewFieldEnemy()
+{
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			cout << " " << fieldEnemy[i][j];
+		}
+		cout << endl;
+	}
+}
+
+void Field::ViewHiddenFieldEnemy()
+{
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			cout << " " << hiddenFieldEnemy[i][j];
+		}
+		cout << endl;
+	}
+}
 
 void Field::setCurrent(StateField *s)
 {
@@ -65,7 +106,9 @@ void Field::setFourDeckShip()
 
 Field::~Field()
 {
+
 }
+
 /*
 void Field::shipArrangement()
 {

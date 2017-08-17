@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "ShipArrangemen.h"
 
-void ShipArrangemen::SetSingleDeck(Field* field)
+void ShipArrangemen::SetSingleDeck(Field* fieldClass)
 {
 	cout << "SetSingleDeck"<<endl;
 }
@@ -11,7 +11,7 @@ void ShipArrangemen::SetSingleDeck(Field* field)
 	bool        isHoriz,
 	int         rowTop,
 	int         colLeft,
-	char  field[][SIZE_FIELD]
+	char  fieldClass[][SIZE_FIELD]
 )
 {
 	if (isHoriz)
@@ -24,7 +24,7 @@ void ShipArrangemen::SetSingleDeck(Field* field)
 				j <= std::min(SIZE_FIELD - 1, colLeft + size);
 				++j)
 			{
-				if (field[i][j] == SYMB_SHIP) return false; //If in this place is the ship we return false
+				if (fieldClass[i][j] == SYMB_SHIP) return false; //If in this place is the ship we return false
 			}
 		}
 		return  true;
@@ -39,7 +39,7 @@ void ShipArrangemen::SetSingleDeck(Field* field)
 				j <= std::min(SIZE_FIELD - 1, colLeft + 1);
 				++j)
 			{
-				if (field[i][j] == SYMB_SHIP) return false;
+				if (fieldClass[i][j] == SYMB_SHIP) return false;
 			}
 		}
 		return  true;

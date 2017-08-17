@@ -1,19 +1,20 @@
 #include "stdafx.h"
 #include "SetFourDeckShip.h"
-
+#include <Windows.h>
 
 SetFourDeckShip::SetFourDeckShip(Field* fieldClass)
 {
+	srand(time(NULL));
 	//add ship FourDeck on board
 	for (int i = 0; i < 1; ++i)
 	{
-		ShipFourDeckArrangement(4, fieldClass->field, &fieldClass->CoordinateFourDeckShip);
+		ShipFourDeckArrangement(4, fieldClass->fieldUser, &fieldClass->CoordinateFourDeckShip);
+		ShipFourDeckArrangement(4, fieldClass->fieldEnemy, &fieldClass->CoordinateFourDeckShipEnemy);
 	}
 }
 
 void  SetFourDeckShip::ShipFourDeckArrangement(int  size, char  field[][SIZE_FIELD], vector<int>* CoordinateShip)
 {
-	srand(time(NULL));
 	bool  isHoris = rand() % 2 == 0;//If rand() % 2 == 0 return true 
 	int   rowTop = 0;
 	int   colLeft = 0;

@@ -10,12 +10,19 @@ class Field
 
 public:
 	Field();
-	char field[SIZE_FIELD][SIZE_FIELD];
-	
+	char fieldUser[SIZE_FIELD][SIZE_FIELD];
+	char fieldEnemy[SIZE_FIELD][SIZE_FIELD];
+	char hiddenFieldEnemy[SIZE_FIELD][SIZE_FIELD];
+
 	vector<int> CoordinateSingleDeckShip;
 	vector<int> CoordinateDoubleDeckShip;
 	vector<int> CoordinateThreeDeckShip;
 	vector<int> CoordinateFourDeckShip;
+
+	vector<int> CoordinateSingleDeckShipEnemy;
+	vector<int> CoordinateDoubleDeckShipEnemy;
+	vector<int> CoordinateThreeDeckShipEnemy;
+	vector<int> CoordinateFourDeckShipEnemy;
 
 	void setCurrent(StateField *s);
 
@@ -24,8 +31,11 @@ public:
 	void setThreeDeckShip();
 	void setFourDeckShip();
 
-	void ViewField();
-	virtual ~Field();
+	void ViewFieldUser();
+	void ViewFieldEnemy();
+	void ViewHiddenFieldEnemy();
 
 	void shipArrangement();
+
+	virtual ~Field();
 };

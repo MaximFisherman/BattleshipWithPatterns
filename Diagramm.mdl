@@ -64,39 +64,6 @@
 	subsystem  	"Component View"
 	quidu      	"598F46C80201"
 	logical_models 	(list unit_reference_list
-	    (object Class "DoubleDeckShip"
-		quid       	"598F470A017A"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"599020A1008E"
-			supplier   	"Logical View::Field"
-			quidu      	"598F4864025D"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "CoordinateShip"
-			quid       	"59901FF10004"
-			type       	"List")))
-	    (object Class "SingleDeckShip"
-		quid       	"598F473C02C2"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"599020A50321"
-			supplier   	"Logical View::Field"
-			quidu      	"598F4864025D"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "CoordinateShip"
-			quid       	"59901FD800BD"
-			type       	"List")))
-	    (object Class "FourDeckShip"
-		quid       	"598F47420315"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"599020A703DA"
-			supplier   	"Logical View::Field"
-			quidu      	"598F4864025D"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "CoordinateShip"
-			quid       	"5990201F03D1"
-			type       	"List")))
 	    (object Class "Field"
 		quid       	"598F4864025D"
 		superclasses 	(list inheritance_relationship_list
@@ -107,27 +74,78 @@
 		    (object Inheritance_Relationship
 			quid       	"598F4B81021F"
 			supplier   	"Logical View::Statistic"
-			quidu      	"598F4B68034E")
-		    (object Inheritance_Relationship
-			quid       	"59902A22033A"
-			supplier   	"Logical View::Context"
-			quidu      	"599029E902A0"))
+			quidu      	"598F4B68034E"))
 		operations 	(list Operations
-		    (object Operation "Move "
+		    (object Operation "setCurrent"
 			quid       	"598F486F0114"
+			parameters 	(list Parameters
+			    (object Parameter "StateField* s"
+				quid       	"59942DC30030"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setSingleDeckShip"
+			quid       	"598F4A2D039C"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setDoubleDeckShip"
+			quid       	"59942C9F0122"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setThreeDeckShip"
+			quid       	"59942CAF0100"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setFourDeckShip"
+			quid       	"59942CB801A5"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
 		    (object Operation "shipArrangement"
-			quid       	"598F4A2D039C"
+			quid       	"59942CC30172"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
-			uid        	0)))
-	    (object Class "ShipArrangement"
+			uid        	0))
+		class_attributes 	(list class_attribute_list
+		    (object ClassAttribute "CoordinateSingleDeckShip"
+			quid       	"59942CF6015C")
+		    (object ClassAttribute "CoordinateDoubleDeckShip"
+			quid       	"59942D02000E")
+		    (object ClassAttribute "CoordinateThreeDeckShip"
+			quid       	"59942D1302C2")
+		    (object ClassAttribute "CoordinateFourDeckShip"
+			quid       	"59942D1E012C")
+		    (object ClassAttribute "field[SIZE_FIELD][SIZE_FIELD]"
+			quid       	"59942D2D02BA")
+		    (object ClassAttribute "StateField* current"
+			quid       	"59942D900371")))
+	    (object Class "StateField"
 		quid       	"598F48FC01CF"
 		operations 	(list Operations
-		    (object Operation "use"
+		    (object Operation "setSingleDeckShip"
 			quid       	"598F49160339"
+			parameters 	(list Parameters
+			    (object Parameter "Field* field"
+				quid       	"59942E620381"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setDoubleDeckShip"
+			quid       	"59942E1B0310"
+			parameters 	(list Parameters
+			    (object Parameter "Field* field"
+				quid       	"59942E590040"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "setThreeDeckShip"
+			quid       	"59942E2901CA"
+			parameters 	(list Parameters
+			    (object Parameter "Field* field"
+				quid       	"59942E49008A"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
@@ -152,7 +170,12 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
-		    (object Operation "~ShipArrangement"
+		    (object Operation "StateField"
+			quid       	"59942E9D037B"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "~StateField"
 			quid       	"59902D2503B3"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
@@ -161,12 +184,32 @@
 		quid       	"598F4967025D"
 		superclasses 	(list inheritance_relationship_list
 		    (object Inheritance_Relationship
-			quid       	"598F4A1A025C"
-			supplier   	"Logical View::ShipArrangement"
+			quid       	"59942F71018B"
+			supplier   	"Logical View::StateField"
 			quidu      	"598F48FC01CF"))
 		operations 	(list Operations
-		    (object Operation "algoritm"
+		    (object Operation "SetFourDeckShip"
 			quid       	"598F497C008A"
+			parameters 	(list Parameters
+			    (object Parameter "Field* field"
+				quid       	"59942EE70228"))
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "~SetFourDeckShip"
+			quid       	"59942F3F021B"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "ShipFourDeckArrangement"
+			quid       	"59942EED002A"
+			parameters 	(list Parameters
+			    (object Parameter "int size"
+				quid       	"59942F1600C1")
+			    (object Parameter "char field[][SIZE_FIELD]"
+				quid       	"59942F160113")
+			    (object Parameter "vector<int>* CoordinateShip"
+				quid       	"59942F2A03C3"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)))
@@ -175,11 +218,28 @@
 		superclasses 	(list inheritance_relationship_list
 		    (object Inheritance_Relationship
 			quid       	"598F4A1D013A"
-			supplier   	"Logical View::ShipArrangement"
+			supplier   	"Logical View::StateField"
 			quidu      	"598F48FC01CF"))
 		operations 	(list Operations
-		    (object Operation "algoritm"
+		    (object Operation "SetThreeDeckShip"
 			quid       	"598F49A60035"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "~SetThreeDeckShip"
+			quid       	"59942F9A008C"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "ShipThreeDeckArrangement"
+			quid       	"59942FA30202"
+			parameters 	(list Parameters
+			    (object Parameter "int size"
+				quid       	"59942FA501DD")
+			    (object Parameter "char field[][SIZE_FIELD]"
+				quid       	"59942FA501FC")
+			    (object Parameter "vector<int>* CoordinateShip"
+				quid       	"59942FA50215"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)))
@@ -188,11 +248,28 @@
 		superclasses 	(list inheritance_relationship_list
 		    (object Inheritance_Relationship
 			quid       	"598F4A1F0186"
-			supplier   	"Logical View::ShipArrangement"
+			supplier   	"Logical View::StateField"
 			quidu      	"598F48FC01CF"))
 		operations 	(list Operations
-		    (object Operation "algoritm"
+		    (object Operation "SetDoubleDeckShip"
 			quid       	"598F4A080145"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "~SetDoubleDeckShip"
+			quid       	"59942FCC0174"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "ShipDoubleDeckArrangement"
+			quid       	"59942FD70380"
+			parameters 	(list Parameters
+			    (object Parameter "int size"
+				quid       	"59942FE00284")
+			    (object Parameter "char field[][SIZE_FIELD]"
+				quid       	"59942FE002AD")
+			    (object Parameter "vector<int>* CoordinateShip"
+				quid       	"59942FE002C9"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)))
@@ -211,65 +288,48 @@
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)))
-	    (object Class "ThreeDeckShip"
-		quid       	"59901F260140"
-		superclasses 	(list inheritance_relationship_list
-		    (object Inheritance_Relationship
-			quid       	"5990209E008C"
-			supplier   	"Logical View::Field"
-			quidu      	"598F4864025D"))
-		class_attributes 	(list class_attribute_list
-		    (object ClassAttribute "CoordinateShip"
-			quid       	"5990201102E3"
-			type       	"List")))
-	    (object Class "Ship"
-		quid       	"5990229501E6")
 	    (object Class "SetSingleDeckShip"
 		quid       	"59902816017D"
 		superclasses 	(list inheritance_relationship_list
 		    (object Inheritance_Relationship
-			quid       	"5990282302A4"
-			supplier   	"Logical View::ShipArrangement"
-			quidu      	"598F48FC01CF")))
-	    (object Class "Context"
-		quid       	"599029E902A0"
+			quid       	"599430200355"
+			supplier   	"Logical View::StateField"
+			quidu      	"598F48FC01CF"))
 		operations 	(list Operations
-		    (object Operation "useStrategy"
-			quid       	"599029F8005B"
+		    (object Operation "SetSingleDeckShip"
+			quid       	"59942FF70093"
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)
-		    (object Operation "setStrategy"
-			quid       	"599029FD0308"
+		    (object Operation "~SetSingleDeckShip"
+			quid       	"59942FFF0364"
+			concurrency 	"Sequential"
+			opExportControl 	"Public"
+			uid        	0)
+		    (object Operation "ShipSingleDeckArrangement"
+			quid       	"5994300E0108"
+			parameters 	(list Parameters
+			    (object Parameter "int size"
+				quid       	"59943017032C")
+			    (object Parameter "char field[][SIZE_FIELD]"
+				quid       	"599430170363")
+			    (object Parameter "vector<int>* CoordinateShip"
+				quid       	"59943017037D"))
 			concurrency 	"Sequential"
 			opExportControl 	"Public"
 			uid        	0)))
 	    (object Association "$UNNAMED$0"
-		quid       	"598F4BBE03C9"
+		quid       	"5994304D0213"
 		roles      	(list role_list
 		    (object Role "$UNNAMED$1"
-			quid       	"598F4BBF023A"
-			supplier   	"Logical View::ShipArrangement"
+			quid       	"5994304E00EC"
+			supplier   	"Logical View::StateField"
 			quidu      	"598F48FC01CF"
 			is_navigable 	TRUE)
 		    (object Role "$UNNAMED$2"
-			quid       	"598F4BBF023D"
-			supplier   	"Logical View::Context"
-			quidu      	"599029E902A0"
-			is_navigable 	TRUE
-			is_aggregate 	TRUE)))
-	    (object Association "$UNNAMED$3"
-		quid       	"598F4BFE0253"
-		roles      	(list role_list
-		    (object Role "$UNNAMED$4"
-			quid       	"598F4BFF0121"
-			supplier   	"Logical View::ShipArrangement"
-			quidu      	"598F48FC01CF"
-			is_navigable 	TRUE)
-		    (object Role "$UNNAMED$5"
-			quid       	"598F4BFF0125"
-			supplier   	"Logical View::Context"
-			quidu      	"599029E902A0"))))
+			quid       	"5994304E00F1"
+			supplier   	"Logical View::Field"
+			quidu      	"598F4864025D"))))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Main"
 		quid       	"598F46C80205"
@@ -277,14 +337,11 @@
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
-		origin_x   	2714
-		origin_y   	0
+		origin_x   	0
+		origin_y   	13
 		items      	(list diagram_item_list
-		    (object ClassView "Class" "Logical View::DoubleDeckShip" @1
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(517, 550)
+		    (object NoteView @1
+			location   	(803, 878)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -297,44 +354,21 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@1
-			    location   	(303, 469)
+			    location   	(665, 819)
 			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	428
-			    justify    	0
-			    label      	"DoubleDeckShip")
-			icon_style 	"Icon"
+			    nlines     	2
+			    max_width  	240
+			    justify    	1
+			    label      	"current")
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"598F470A017A"
-			compartment 	(object Compartment
-			    Parent_View 	@1
-			    location   	(303, 530)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	16777215
-			    anchor     	2
-			    nlines     	2
-			    max_width  	437
-			    justify    	1)
-			width      	446
-			height     	186
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::SingleDeckShip" @2
+			width      	300
+			height     	131)
+		    (object ClassView "Class" "Logical View::SetFourDeckShip" @2
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(515, 765)
+			location   	(403, 1744)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -347,19 +381,19 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@2
-			    location   	(301, 684)
+			    location   	(118, 1613)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	428
+			    max_width  	570
 			    justify    	0
-			    label      	"SingleDeckShip")
+			    label      	"SetFourDeckShip")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"598F473C02C2"
+			quidu      	"598F4967025D"
 			compartment 	(object Compartment
 			    Parent_View 	@2
-			    location   	(301, 745)
+			    location   	(118, 1674)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -373,18 +407,18 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	2
-			    max_width  	437
+			    nlines     	4
+			    max_width  	566
 			    justify    	1)
-			width      	446
-			height     	186
+			width      	588
+			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::FourDeckShip" @3
+		    (object ClassView "Class" "Logical View::SetThreeDeckShip" @3
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(515, 984)
+			location   	(1066, 1753)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -397,19 +431,19 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@3
-			    location   	(301, 903)
+			    location   	(772, 1622)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	428
+			    max_width  	588
 			    justify    	0
-			    label      	"FourDeckShip")
+			    label      	"SetThreeDeckShip")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"598F47420315"
+			quidu      	"598F498D037A"
 			compartment 	(object Compartment
 			    Parent_View 	@3
-			    location   	(301, 964)
+			    location   	(772, 1683)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -421,17 +455,20 @@
 				color      	0
 				default_color 	TRUE)
 			    icon_style 	"Icon"
-			    fill_color 	16777215
+			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	2
-			    max_width  	437
+			    nlines     	4
+			    max_width  	585
 			    justify    	1)
-			width      	446
-			height     	186
+			width      	606
+			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object NoteView @4
-			location   	(733, 1631)
+		    (object ClassView "Class" "Logical View::SetDoubleDeckShip" @4
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1725, 1763)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -444,140 +481,10 @@
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@4
-			    location   	(314, 1568)
-			    fill_color 	13434879
-			    nlines     	2
-			    max_width  	803
-			    justify    	1
-			    label      	
-|Strategy -> Alhoritm (); 
-|Move = context() in pattern strategy
-			    )
-			line_color 	3342489
-			fill_color 	13434879
-			width      	863
-			height     	138)
-		    (object ClassView "Class" "Logical View::SetFourDeckShip" @5
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1363, 1365)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@5
-			    location   	(1184, 1284)
+			    location   	(1419, 1632)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	358
-			    justify    	0
-			    label      	"SetFourDeckShip")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"598F4967025D"
-			compartment 	(object Compartment
-			    Parent_View 	@5
-			    location   	(1184, 1345)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	2
-			    max_width  	228
-			    justify    	1)
-			width      	376
-			height     	186
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::SetThreeDeckShip" @6
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1818, 1356)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@6
-			    location   	(1628, 1275)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	380
-			    justify    	0
-			    label      	"SetThreeDeckShip")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"598F498D037A"
-			compartment 	(object Compartment
-			    Parent_View 	@6
-			    location   	(1628, 1336)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	2
-			    max_width  	228
-			    justify    	1)
-			width      	398
-			height     	186
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::SetDoubleDeckShip" @7
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(2318, 1353)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@7
-			    location   	(2118, 1272)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	400
+			    max_width  	612
 			    justify    	0
 			    label      	"SetDoubleDeckShip")
 			icon_style 	"Icon"
@@ -585,8 +492,8 @@
 			fill_color 	13434879
 			quidu      	"598F49AD02D6"
 			compartment 	(object Compartment
-			    Parent_View 	@7
-			    location   	(2118, 1333)
+			    Parent_View 	@4
+			    location   	(1419, 1693)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -600,14 +507,14 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	2
-			    max_width  	228
+			    nlines     	4
+			    max_width  	610
 			    justify    	1)
-			width      	418
-			height     	186
+			width      	630
+			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::Statistic" @8
+		    (object ClassView "Class" "Logical View::Statistic" @5
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -623,7 +530,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@8
+			    Parent_View 	@5
 			    location   	(2781, 239)
 			    fill_color 	13434879
 			    nlines     	1
@@ -638,7 +545,7 @@
 			height     	126
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::GameLogic" @9
+		    (object ClassView "Class" "Logical View::GameLogic" @6
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
@@ -654,7 +561,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@9
+			    Parent_View 	@6
 			    location   	(1930, 44)
 			    fill_color 	13434879
 			    nlines     	1
@@ -666,7 +573,7 @@
 			fill_color 	13434879
 			quidu      	"598F4B720329"
 			compartment 	(object Compartment
-			    Parent_View 	@9
+			    Parent_View 	@6
 			    location   	(1930, 105)
 			    font       	(object Font
 				size       	10
@@ -688,11 +595,11 @@
 			height     	236
 			annotation 	8
 			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::ShipArrangement" @10
+		    (object ClassView "Class" "Logical View::SetSingleDeckShip" @7
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(2136, 875)
+			location   	(2466, 1772)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -704,20 +611,20 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@10
-			    location   	(1927, 744)
+			    Parent_View 	@7
+			    location   	(2166, 1641)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	418
+			    max_width  	600
 			    justify    	0
-			    label      	"ShipArrangement")
+			    label      	"SetSingleDeckShip")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"598F48FC01CF"
+			quidu      	"59902816017D"
 			compartment 	(object Compartment
-			    Parent_View 	@10
-			    location   	(1927, 805)
+			    Parent_View 	@7
+			    location   	(2166, 1702)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -729,50 +636,21 @@
 				color      	0
 				default_color 	TRUE)
 			    icon_style 	"Icon"
-			    fill_color 	13434879
+			    fill_color 	16777215
 			    anchor     	2
 			    nlines     	4
-			    max_width  	416
+			    max_width  	603
 			    justify    	1)
-			width      	436
+			width      	618
 			height     	286
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @11
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"598F4A1A025C"
-			client     	@5
-			supplier   	@10
-			vertices   	(list Points
-			    (1508, 1271)
-			    (1917, 1012))
-			line_style 	0)
-		    (object InheritView "" @12
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"598F4A1D013A"
-			client     	@6
-			supplier   	@10
-			vertices   	(list Points
-			    (1878, 1262)
-			    (2040, 1018))
-			line_style 	0)
-		    (object InheritView "" @13
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"598F4A1F0186"
-			client     	@7
-			supplier   	@10
-			vertices   	(list Points
-			    (2281, 1259)
-			    (2189, 1018))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::Field" @14
+		    (object ClassView "Class" "Logical View::Field" @8
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(1328, 348)
+			ShowOperationSignature 	TRUE
+			location   	(1113, 378)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -784,11 +662,11 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@14
-			    location   	(1134, 242)
+			    Parent_View 	@8
+			    location   	(804, 22)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	388
+			    max_width  	618
 			    justify    	0
 			    label      	"Field")
 			icon_style 	"Icon"
@@ -796,8 +674,8 @@
 			fill_color 	13434879
 			quidu      	"598F4864025D"
 			compartment 	(object Compartment
-			    Parent_View 	@14
-			    location   	(1134, 303)
+			    Parent_View 	@8
+			    location   	(804, 83)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -811,38 +689,39 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	3
-			    max_width  	385
+			    nlines     	13
+			    max_width  	625
 			    justify    	1)
-			width      	406
-			height     	236
+			width      	636
+			height     	736
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @15
+		    (object InheritView "" @9
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"598F4B7E00E1"
-			client     	@14
-			supplier   	@9
+			client     	@8
+			supplier   	@6
 			vertices   	(list Points
-			    (1531, 295)
-			    (1920, 195))
+			    (1431, 303)
+			    (1920, 191))
 			line_style 	0)
-		    (object InheritView "" @16
+		    (object InheritView "" @10
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"598F4B81021F"
-			client     	@14
-			supplier   	@8
+			client     	@8
+			supplier   	@5
 			vertices   	(list Points
-			    (1531, 339)
-			    (2771, 293))
+			    (1431, 361)
+			    (2771, 294))
 			line_style 	0)
-		    (object ClassView "Class" "Logical View::ThreeDeckShip" @17
+		    (object ClassView "Class" "Logical View::StateField" @11
 			ShowCompartmentStereotypes 	TRUE
 			IncludeAttribute 	TRUE
 			IncludeOperation 	TRUE
-			location   	(521, 340)
+			ShowOperationSignature 	TRUE
+			location   	(1103, 1256)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -854,20 +733,20 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@17
-			    location   	(307, 259)
+			    Parent_View 	@11
+			    location   	(380, 1050)
 			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	428
+			    max_width  	1446
 			    justify    	0
-			    label      	"ThreeDeckShip")
+			    label      	"StateField")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"59901F260140"
+			quidu      	"598F48FC01CF"
 			compartment 	(object Compartment
-			    Parent_View 	@17
-			    location   	(307, 320)
+			    Parent_View 	@11
+			    location   	(380, 1111)
 			    font       	(object Font
 				size       	10
 				face       	"Arial"
@@ -881,55 +760,104 @@
 			    icon_style 	"Icon"
 			    fill_color 	13434879
 			    anchor     	2
-			    nlines     	2
-			    max_width  	437
+			    nlines     	7
+			    max_width  	1444
 			    justify    	1)
-			width      	446
-			height     	186
+			width      	1464
+			height     	436
 			annotation 	8
 			autoResize 	TRUE)
-		    (object InheritView "" @18
+		    (object InheritView "" @12
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"5990209E008C"
-			client     	@17
-			supplier   	@14
-			vertices   	(list Points
-			    (744, 342)
-			    (1124, 345))
-			line_style 	0)
-		    (object InheritView "" @19
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"599020A1008E"
-			client     	@1
-			supplier   	@14
-			vertices   	(list Points
-			    (740, 492)
-			    (1124, 398))
-			line_style 	0)
-		    (object InheritView "" @20
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"599020A50321"
+			quidu      	"59942F71018B"
 			client     	@2
-			supplier   	@14
+			supplier   	@11
 			vertices   	(list Points
-			    (694, 671)
-			    (1124, 452))
+			    (606, 1600)
+			    (787, 1474))
 			line_style 	0)
-		    (object InheritView "" @21
+		    (object InheritView "" @13
 			stereotype 	TRUE
 			line_color 	3342489
-			quidu      	"599020A703DA"
+			quidu      	"598F4A1D013A"
 			client     	@3
-			supplier   	@14
+			supplier   	@11
 			vertices   	(list Points
-			    (632, 890)
-			    (1175, 466))
+			    (1076, 1609)
+			    (1085, 1474))
 			line_style 	0)
-		    (object NoteView @22
-			location   	(706, 109)
+		    (object InheritView "" @14
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"598F4A1F0186"
+			client     	@4
+			supplier   	@11
+			vertices   	(list Points
+			    (1548, 1619)
+			    (1371, 1474))
+			line_style 	0)
+		    (object InheritView "" @15
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"599430200355"
+			client     	@7
+			supplier   	@11
+			vertices   	(list Points
+			    (2156, 1655)
+			    (1678, 1474))
+			line_style 	0)
+		    (object AssociationViewNew "$UNNAMED$0" @16
+			location   	(1106, 891)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    charSet    	204
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5994304D0213"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$1" @17
+				Parent_View 	@16
+				location   	(206, 497)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5994304E00EC"
+				client     	@16
+				supplier   	@11
+				vertices   	(list Points
+				    (1106, 891)
+				    (1104, 1037))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$2" @18
+				Parent_View 	@16
+				location   	(206, 497)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5994304E00F1"
+				client     	@16
+				supplier   	@8
+				vertices   	(list Points
+				    (1106, 891)
+				    (1108, 746))
+				line_style 	0)))
+		    (object AttachView "" @19
+			stereotype 	TRUE
+			line_color 	3342489
+			client     	@1
+			supplier   	@16
+			vertices   	(list Points
+			    (953, 883)
+			    (1106, 891))
+			line_style 	0)
+		    (object NoteView @20
+			location   	(216, 931)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -941,272 +869,25 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@22
-			    location   	(309, 50)
+			    Parent_View 	@20
+			    location   	(78, 871)
 			    fill_color 	13434879
 			    nlines     	2
-			    max_width  	758
+			    max_width  	240
 			    justify    	1
-			    label      	"Factory Method. Generalized Constructor")
+			    label      	"Pattern State")
 			line_color 	3342489
 			fill_color 	13434879
-			width      	818
-			height     	131)
-		    (object AttachView "" @23
+			width      	300
+			height     	132)
+		    (object AttachView "" @21
 			stereotype 	TRUE
 			line_color 	3342489
-			client     	@22
-			supplier   	@18
+			client     	@20
+			supplier   	@11
 			vertices   	(list Points
-			    (770, 174)
-			    (934, 343))
-			line_style 	0)
-		    (object AttachView "" @24
-			stereotype 	TRUE
-			line_color 	3342489
-			client     	@22
-			supplier   	@19
-			vertices   	(list Points
-			    (749, 174)
-			    (932, 445))
-			line_style 	0)
-		    (object AttachView "" @25
-			stereotype 	TRUE
-			line_color 	3342489
-			client     	@22
-			supplier   	@20
-			vertices   	(list Points
-			    (734, 174)
-			    (909, 561))
-			line_style 	0)
-		    (object AttachView "" @26
-			stereotype 	TRUE
-			line_color 	3342489
-			client     	@22
-			supplier   	@21
-			vertices   	(list Points
-			    (727, 174)
-			    (903, 678))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::Ship" @27
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(2719, 706)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@27
-			    location   	(2638, 655)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	162
-			    justify    	0
-			    label      	"Ship")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"5990229501E6"
-			height     	126
-			annotation 	8
-			autoResize 	TRUE)
-		    (object ClassView "Class" "Logical View::SetSingleDeckShip" @28
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(2851, 1331)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@28
-			    location   	(2654, 1280)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	394
-			    justify    	0
-			    label      	"SetSingleDeckShip")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"59902816017D"
-			width      	412
-			height     	126
-			annotation 	8
-			autoResize 	TRUE)
-		    (object InheritView "" @29
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"5990282302A4"
-			client     	@28
-			supplier   	@10
-			vertices   	(list Points
-			    (2751, 1267)
-			    (2354, 1014))
-			line_style 	0)
-		    (object ClassView "Class" "Logical View::Context" @30
-			ShowCompartmentStereotypes 	TRUE
-			IncludeAttribute 	TRUE
-			IncludeOperation 	TRUE
-			location   	(1316, 903)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object ItemLabel
-			    Parent_View 	@30
-			    location   	(1166, 797)
-			    fill_color 	13434879
-			    nlines     	1
-			    max_width  	300
-			    justify    	0
-			    label      	"Context")
-			icon_style 	"Icon"
-			line_color 	3342489
-			fill_color 	13434879
-			quidu      	"599029E902A0"
-			compartment 	(object Compartment
-			    Parent_View 	@30
-			    location   	(1166, 858)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				charSet    	204
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    icon_style 	"Icon"
-			    fill_color 	13434879
-			    anchor     	2
-			    nlines     	3
-			    max_width  	303
-			    justify    	1)
-			width      	318
-			height     	236
-			annotation 	8
-			autoResize 	TRUE)
-		    (object AssociationViewNew "$UNNAMED$3" @31
-			location   	(1696, 889)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"598F4BFE0253"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$4" @32
-				Parent_View 	@31
-				location   	(315, 67)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"598F4BFF0121"
-				client     	@31
-				supplier   	@10
-				vertices   	(list Points
-				    (1696, 889)
-				    (1917, 882))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$5" @33
-				Parent_View 	@31
-				location   	(315, 67)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"598F4BFF0125"
-				client     	@31
-				supplier   	@30
-				vertices   	(list Points
-				    (1696, 889)
-				    (1475, 896))
-				line_style 	0)))
-		    (object AssociationViewNew "$UNNAMED$0" @34
-			location   	(1696, 889)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    charSet    	204
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"598F4BBE03C9"
-			roleview_list 	(list RoleViews
-			    (object RoleView "$UNNAMED$1" @35
-				Parent_View 	@34
-				location   	(315, 67)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"598F4BBF023A"
-				client     	@34
-				supplier   	@10
-				vertices   	(list Points
-				    (1696, 889)
-				    (1917, 882))
-				line_style 	0)
-			    (object RoleView "$UNNAMED$2" @36
-				Parent_View 	@34
-				location   	(315, 67)
-				stereotype 	TRUE
-				line_color 	3342489
-				quidu      	"598F4BBF023D"
-				client     	@34
-				supplier   	@30
-				vertices   	(list Points
-				    (1696, 889)
-				    (1475, 896))
-				line_style 	0)))
-		    (object InheritView "" @37
-			stereotype 	TRUE
-			line_color 	3342489
-			quidu      	"59902A22033A"
-			client     	@14
-			supplier   	@30
-			vertices   	(list Points
-			    (1325, 466)
-			    (1318, 784))
-			line_style 	0)
-		    (object AttachView "" @38
-			stereotype 	TRUE
-			line_color 	3342489
-			client     	@30
-			supplier   	@4
-			vertices   	(list Points
-			    (1219, 1021)
-			    (787, 1561))
+			    (366, 985)
+			    (508, 1037))
 			line_style 	0)))))
     root_subsystem 	(object SubSystem "Component View"
 	quid       	"598F46C80201"

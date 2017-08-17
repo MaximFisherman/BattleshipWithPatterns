@@ -12,7 +12,7 @@ public:
 		bool        isHoriz,
 		int         rowTop,
 		int         colLeft,
-		char  field[][SIZE_FIELD]
+		char  fieldClass[][SIZE_FIELD]
 	);*/
     virtual void SetSingleDeck(Field *m);
 	//virtual void SetDoubleDeck(Field *m);

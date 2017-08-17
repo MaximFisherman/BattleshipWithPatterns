@@ -3,17 +3,17 @@
 
 SetSingleDeckShip::SetSingleDeckShip(Field* fieldClass)
 {
-
+	srand(time(NULL));
 	//add ship SingleDeck on board
 	for (int i = 0; i < 4; ++i)
 	{
-		ShipSingleDeckArrangement(1, fieldClass->field, &fieldClass->CoordinateSingleDeckShip);
+		ShipSingleDeckArrangement(1, fieldClass->fieldUser, &fieldClass->CoordinateSingleDeckShip);
+		ShipSingleDeckArrangement(1, fieldClass->fieldEnemy, &fieldClass->CoordinateSingleDeckShipEnemy);
 	}
 }
 
 void  SetSingleDeckShip::ShipSingleDeckArrangement(int  size, char  field[][SIZE_FIELD], vector<int>* CoordinateSingleDeckShip)
 {
-	srand(time(NULL));
 	bool  isHoris = rand() % 2 == 0;//If rand() % 2 == 0 return true 
 	int   rowTop = 0;
 	int   colLeft = 0;

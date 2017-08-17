@@ -4,16 +4,17 @@
 
 SetDoubleDeckShip::SetDoubleDeckShip(Field* fieldClass)
 {
+	srand(time(NULL));
 	//add ship DoubleDeck on board
 	for (int i = 0; i < 3; ++i)
 	{
-		ShipDoubleDeckArrangement(2, fieldClass->field, &fieldClass->CoordinateDoubleDeckShip);
+		ShipDoubleDeckArrangement(2, fieldClass->fieldUser, &fieldClass->CoordinateDoubleDeckShip);
+		ShipDoubleDeckArrangement(2, fieldClass->fieldEnemy, &fieldClass->CoordinateDoubleDeckShipEnemy);
 	}
 }
 
 void  SetDoubleDeckShip::ShipDoubleDeckArrangement(int  size, char  field[][SIZE_FIELD], vector<int>* CoordinateShip)
 {
-	srand(time(NULL));
 	bool  isHoris = rand() % 2 == 0;//If rand() % 2 == 0 return true 
 	int   rowTop = 0;
 	int   colLeft = 0;

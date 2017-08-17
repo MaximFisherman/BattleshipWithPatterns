@@ -4,16 +4,17 @@
 
 SetThreeDeckShip::SetThreeDeckShip(Field* fieldClass)
 {
+	srand(time(NULL));
 	//add ship ThreeDeck on board
 	for (int i = 0; i < 2; ++i)
 	{
-		ShipThreeDeckArrangement(3, fieldClass->field, &fieldClass->CoordinateThreeDeckShip);
+		ShipThreeDeckArrangement(3, fieldClass->fieldUser, &fieldClass->CoordinateThreeDeckShip);
+		ShipThreeDeckArrangement(3, fieldClass->fieldEnemy, &fieldClass->CoordinateThreeDeckShipEnemy);
 	}
 }
 
 void  SetThreeDeckShip::ShipThreeDeckArrangement(int  size, char  field[][SIZE_FIELD], vector<int>* CoordinateShip)
 {
-	srand(time(NULL));
 	bool  isHoris = rand() % 2 == 0;//If rand() % 2 == 0 return true 
 	int   rowTop = 0;
 	int   colLeft = 0;
@@ -43,7 +44,7 @@ void  SetThreeDeckShip::ShipThreeDeckArrangement(int  size, char  field[][SIZE_F
 		{
 			field[rowTop][j] = SYMB_SHIP;//Centering horizontally
 
-										 //Add coordinate to vector 
+			//Add coordinate to vector 
 			CoordinateShip->push_back(j);
 			CoordinateShip->push_back(rowTop);
 		}
@@ -54,7 +55,7 @@ void  SetThreeDeckShip::ShipThreeDeckArrangement(int  size, char  field[][SIZE_F
 		{
 			field[i][colLeft] = SYMB_SHIP;// Centering vertical
 
-										  //Add coordinate to vector 
+			//Add coordinate to vector 
 			CoordinateShip->push_back(colLeft);
 			CoordinateShip->push_back(i);
 		}

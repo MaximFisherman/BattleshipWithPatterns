@@ -9,7 +9,7 @@ class SetSingleDeckShip :
 	public StateField
 {
 public:
-	SetSingleDeckShip(Field* field);
+	SetSingleDeckShip(Field* fieldClass);
 	void ShipSingleDeckArrangement(int size, char field[][SIZE_FIELD], vector<int>* CoordinateShip);
 
 	~SetSingleDeckShip();
