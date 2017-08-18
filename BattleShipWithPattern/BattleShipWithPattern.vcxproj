@@ -149,6 +149,7 @@
     <ClInclude Include="Field.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="Move.h" />
+    <ClInclude Include="Options.h" />
     <ClInclude Include="SetDoubleDeckShip.h" />
     <ClInclude Include="SetFourDeckShip.h" />
     <ClInclude Include="SetSingleDeckShip.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="Field.cpp" />
     <ClCompile Include="Move.cpp" />
+    <ClCompile Include="Options.cpp" />
     <ClCompile Include="SetDoubleDeckShip.cpp" />
     <ClCompile Include="SetFourDeckShip.cpp" />
     <ClCompile Include="SetSingleDeckShip.cpp" />

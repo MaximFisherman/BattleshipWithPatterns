@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "Field.h"
 #include "Move.h"
+#include "Options.h"
 
 int main()
 {
@@ -20,8 +21,13 @@ int main()
 
 	system("cls");
 
-	field.ViewFieldUser();
-	field.ViewHiddenFieldEnemy();
+	//field.ViewFieldUser();
+	//field.ViewHiddenFieldEnemy();
+	
+	Options options;
+	///options.Pause();
+	options.ViewStatistic(&field);
+	field.ViewFieldEnemy();
 	system("pause");
     return 0;
 }
