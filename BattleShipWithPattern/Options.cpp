@@ -95,7 +95,7 @@ void Options::CalculateStatisticEnemy(
 
 		int y = fieldClass->CoordinateFourDeckShipEnemy[i];
 		int x = fieldClass->CoordinateFourDeckShipEnemy[i + 1];
-		fieldClass->fieldEnemy[x][y] = 'X';
+		
 		if (fieldClass->fieldEnemy[x][y] == 'X')
 		{
 			flagDestroyShip++;
@@ -103,7 +103,7 @@ void Options::CalculateStatisticEnemy(
 
 		y = fieldClass->CoordinateFourDeckShipEnemy[i + 2];
 		x = fieldClass->CoordinateFourDeckShipEnemy[i + 3];
-		fieldClass->fieldEnemy[x][y] = 'X';
+		
 		if (fieldClass->fieldEnemy[x][y] == 'X')
 		{
 			flagDestroyShip++;
@@ -111,7 +111,7 @@ void Options::CalculateStatisticEnemy(
 
 		y = fieldClass->CoordinateFourDeckShipEnemy[i + 4];
 		x = fieldClass->CoordinateFourDeckShipEnemy[i + 5];
-		fieldClass->fieldEnemy[x][y] = 'X';
+		
 		if (fieldClass->fieldEnemy[x][y] == 'X')
 		{
 			flagDestroyShip++;
@@ -119,7 +119,7 @@ void Options::CalculateStatisticEnemy(
 
 		y = fieldClass->CoordinateFourDeckShipEnemy[i + 6];
 		x = fieldClass->CoordinateFourDeckShipEnemy[i + 7];
-		fieldClass->fieldEnemy[x][y] = 'X';
+		
 		if (fieldClass->fieldEnemy[x][y] == 'X')
 		{
 			flagDestroyShip++;
@@ -278,19 +278,19 @@ void Options::ViewStatistic(Field* field)
 	{
 		cout << "For exit from the menu Statistic, please press Backspace button on your keyboard" << endl;
 		cout << endl;
-		cout << "------------------------------------------- " << endl;
+		cout << "----------------------------------------- " << endl;
 		cout << "|" << "Single deck ship enemy destroy: " << countSingleDeckShipEnemy << "|" << endl;
 		cout << "|" << "Double deck ship enemy destroy: " << countDoubleDeckShipEnemy << "|" << endl;
 		cout << "|" << "Three deck ship enemy destroy:  " << countThreeDeckShipEnemy << "|" << endl;
 		cout << "|" << "Four deck ship enemy destroy:   " << countFourDeckShipEnemy << "|" << endl;
-		cout << "------------------------------------------- " << endl;
+		cout << "----------------------------------------- " << endl;
 
-		cout << "------------------------------------------- " << endl;
+		cout << "----------------------------------------- " << endl;
 		cout << "|" << "Single deck your ship destroy: " << countSingleDeckShipUser << "|" << endl;
 		cout << "|" << "Double deck your ship destroy: " << countDoubleDeckShipUser << "|" << endl;
 		cout << "|" << "Three deck your ship destroy:  " << countThreeDeckShipUser << "|" << endl;
 		cout << "|" << "Four deck your ship destroy:   " << countFourDeckShipUser << "|" << endl;
-		cout << "------------------------------------------- " << endl;
+		cout << "----------------------------------------- " << endl;
 		Sleep(2000);
 
 		system("cls");

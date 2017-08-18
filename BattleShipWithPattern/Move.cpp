@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <windows.h>
 #include "Move.h"
 
 
@@ -11,14 +12,21 @@ bool Move::MoveUser(int x, int y, Field* fieldClass)
 	--x;
 	--y;
 
-	if (x > SIZE_FIELD || x < 0 || y > SIZE_FIELD || y < 0) {
+	if (x > SIZE_FIELD || x < 0 || y > SIZE_FIELD || y < 0) 
+	{
+		system("cls");
 		cout << "You are missed, you fire went beyond" << endl;
+		Sleep(4000);
+		
 		return false;
 	}
 
 	if (fieldClass->fieldEnemy[y][x] == '$' || fieldClass->fieldEnemy[y][x] == 'X')
 	{
+		system("cls");
 		cout << "You already shot at this place" << endl;
+		Sleep(4000);
+		
 		return false;
 	}
 

@@ -17,6 +17,7 @@
 #include <algorithm>
 #include <vector>
 #include <ctime>
+#include <conio.h>
 #include "GlobalVariables.h"
 
 

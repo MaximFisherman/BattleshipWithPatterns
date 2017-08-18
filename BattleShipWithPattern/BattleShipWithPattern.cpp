@@ -2,13 +2,13 @@
 //
 
 #include "stdafx.h"
-#include "Field.h"
-#include "Move.h"
-#include "Options.h"
+#include "Game.h"
 
 int main()
 {
-	Field field;
+	Game game;
+	game.Run();
+	/*Field field;
 	Move move;
 	field.shipArrangement();
 	cout << "You field: " << endl;
@@ -27,7 +27,8 @@ int main()
 	Options options;
 	///options.Pause();
 	options.ViewStatistic(&field);
-	field.ViewFieldEnemy();
+	field.ViewFieldEnemy();*/
+
 	system("pause");
     return 0;
 }

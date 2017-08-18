@@ -92,6 +92,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AddModuleNamesToAssembly>Winmm.lib;%(AddModuleNamesToAssembly)</AddModuleNamesToAssembly>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="Context.h" />
     <ClInclude Include="Field.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GlobalVariables.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="Options.h" />
@@ -163,6 +165,7 @@
     <ClCompile Include="BattleShipWithPattern.cpp" />
     <ClCompile Include="Context.cpp" />
     <ClCompile Include="Field.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Options.cpp" />
     <ClCompile Include="SetDoubleDeckShip.cpp" />
