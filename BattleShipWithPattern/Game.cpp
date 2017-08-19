@@ -30,7 +30,7 @@ void Game::Run()
 		cout << " Your field " << endl;
 			field.ViewFieldUser();
 		cout << "Field your opponent" << endl;
-			field.ViewHiddenFieldEnemy();
+			field.ViewFieldEnemy();
 		
 		cout << "Input 1 for play, input 2 for pause, input 3 for view statistic " << endl;
 			cin >> action;
