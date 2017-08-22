@@ -5,8 +5,11 @@ class Move
 {
 public:
 	Move();
+
 	template<typename FieldType>
 	void Check—ondition(int x, int y, FieldType field[][SIZE_FIELD]);
+
+	bool CheckVictory(Field* field);
 
 	bool CheckKillShipEnemy(Field* field);
 	bool CheckKillShipUser(Field* field);

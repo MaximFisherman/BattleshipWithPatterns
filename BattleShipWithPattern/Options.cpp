@@ -301,6 +301,7 @@ void Options::ViewStatistic(Field* field)
 
 void Options::Pause()
 {
+	system("cls");
 	while (true)
 	{
 		cout << "For exit from the pause menu, please press Backspace button on your keyboard" << endl;

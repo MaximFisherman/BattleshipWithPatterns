@@ -30,11 +30,30 @@ void Game::Run()
 		cout << " Your field " << endl;
 			field.ViewFieldUser();
 		cout << "Field your opponent" << endl;
-			field.ViewFieldEnemy();
+			field.ViewHiddenFieldEnemy();
 		
-		cout << "Input 1 for play, input 2 for pause, input 3 for view statistic " << endl;
+		cout << "Input 1 for attak, input 2 for pause, input 3 for view statistic " << endl;
 			cin >> action;
 
+		if (action == 1)
+		{
+			system("cls");
+
+			cout << " Your field " << endl;
+			field.ViewFieldUser();
+			cout << "Field your opponent" << endl;
+			field.ViewHiddenFieldEnemy();
+
+			cout << "Input x:"; cin >> x; cout << endl;
+			cout << "Input y:"; cin >> y; cout << endl;
+
+			if (move.MoveUser(x, y, &field) == 1)
+			{
+				move.MoveComputer(&field);
+			}
+			move.CheckVictory(&field);
+		}
+			
 		if (action == 2)
 		{
 			options.Pause();
@@ -45,21 +64,6 @@ void Game::Run()
 			options.ViewStatistic(&field);
 		}
 
-		system("cls");
-
-		cout << " Your field " << endl;
-			field.ViewFieldUser();
-		cout << "Field your opponent" << endl;
-			field.ViewHiddenFieldEnemy();
-
-		cout << "Input x:"; cin >> x; cout << endl;
-		cout << "Input y:"; cin >> y; cout << endl;
-
-		if (move.MoveUser(x, y, &field) == 1) 
-		{		
-			move.MoveComputer(&field);
-		}
-		
 		countIteration++;
 	}
 }

@@ -40,6 +40,8 @@ bool Move::CheckKillShipEnemy(Field* fieldClass)
 		{
 			
 			CheckÑondition(x, y, fieldClass->fieldEnemy);
+
+			CheckÑondition(y, x, fieldClass->hiddenFieldEnemy);
 		}
 	}
 
@@ -69,6 +71,102 @@ bool Move::CheckKillShipEnemy(Field* fieldClass)
 		{
 			CheckÑondition(y, x, fieldClass->fieldEnemy);
 			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldEnemy);
+
+			CheckÑondition(y, x, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->hiddenFieldEnemy);
+		}
+	}
+
+	//Check Three deck ship
+	for (int i = 0; i < fieldClass->CoordinateThreeDeckShipEnemy.size(); i += 6)
+	{
+		int flagDestroyShip = 0;
+
+		int y = fieldClass->CoordinateThreeDeckShipEnemy[i];
+		int x = fieldClass->CoordinateThreeDeckShipEnemy[i + 1];
+
+		if (fieldClass->fieldEnemy[x][y] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_1 = fieldClass->CoordinateThreeDeckShipEnemy[i + 2];
+		int xTemp_1 = fieldClass->CoordinateThreeDeckShipEnemy[i + 3];
+
+		if (fieldClass->fieldEnemy[xTemp_1][yTemp_1] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_2 = fieldClass->CoordinateThreeDeckShipEnemy[i + 4];
+		int xTemp_2 = fieldClass->CoordinateThreeDeckShipEnemy[i + 5];
+
+		if (fieldClass->fieldEnemy[xTemp_2][yTemp_2] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		if (flagDestroyShip == 3)
+		{
+			CheckÑondition(y, x, fieldClass->fieldEnemy);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldEnemy);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldEnemy);
+
+			CheckÑondition(y, x, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->hiddenFieldEnemy);
+		}
+	}
+
+
+	//Check Four deck ship
+	for (int i = 0; i < fieldClass->CoordinateFourDeckShipEnemy.size(); i += 8)
+	{
+		int flagDestroyShip = 0;
+
+		int y = fieldClass->CoordinateFourDeckShipEnemy[i];
+		int x = fieldClass->CoordinateFourDeckShipEnemy[i + 1];
+
+		if (fieldClass->fieldEnemy[x][y] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_1 = fieldClass->CoordinateFourDeckShipEnemy[i + 2];
+		int xTemp_1 = fieldClass->CoordinateFourDeckShipEnemy[i + 3];
+
+		if (fieldClass->fieldEnemy[xTemp_1][yTemp_1] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_2 = fieldClass->CoordinateFourDeckShipEnemy[i + 4];
+		int xTemp_2 = fieldClass->CoordinateFourDeckShipEnemy[i + 5];
+
+		if (fieldClass->fieldEnemy[xTemp_2][yTemp_2] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_3 = fieldClass->CoordinateFourDeckShipEnemy[i + 6];
+		int xTemp_3 = fieldClass->CoordinateFourDeckShipEnemy[i + 7];
+
+		if (fieldClass->fieldEnemy[xTemp_3][yTemp_3] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		if (flagDestroyShip == 4)
+		{
+			CheckÑondition(y, x, fieldClass->fieldEnemy);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldEnemy);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldEnemy);
+			CheckÑondition(yTemp_3, xTemp_3, fieldClass->fieldEnemy);
+
+			CheckÑondition(y, x, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->hiddenFieldEnemy);
+			CheckÑondition(yTemp_3, xTemp_3, fieldClass->hiddenFieldEnemy);
 		}
 	}
 	return 0;
@@ -116,6 +214,89 @@ bool Move::CheckKillShipUser(Field* fieldClass)
 			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
 		}
 	}
+
+	//Check Three deck ship
+	for (int i = 0; i < fieldClass->CoordinateThreeDeckShip.size(); i += 6)
+	{
+		int flagDestroyShip = 0;
+
+		int y = fieldClass->CoordinateThreeDeckShip[i];
+		int x = fieldClass->CoordinateThreeDeckShip[i + 1];
+
+		if (fieldClass->fieldUser[x][y] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_1 = fieldClass->CoordinateThreeDeckShip[i + 2];
+		int xTemp_1 = fieldClass->CoordinateThreeDeckShip[i + 3];
+
+		if (fieldClass->fieldUser[xTemp_1][yTemp_1] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_2 = fieldClass->CoordinateThreeDeckShip[i + 4];
+		int xTemp_2 = fieldClass->CoordinateThreeDeckShip[i + 5];
+
+		if (fieldClass->fieldUser[xTemp_2][yTemp_2] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		if (flagDestroyShip == 3)
+		{
+			CheckÑondition(y, x, fieldClass->fieldUser);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldUser);
+		}
+	}
+
+	//Check Four deck ship
+	for (int i = 0; i < fieldClass->CoordinateFourDeckShip.size(); i += 8)
+	{
+		int flagDestroyShip = 0;
+
+		int y = fieldClass->CoordinateFourDeckShip[i];
+		int x = fieldClass->CoordinateFourDeckShip[i + 1];
+
+		if (fieldClass->fieldUser[x][y] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_1 = fieldClass->CoordinateFourDeckShip[i + 2];
+		int xTemp_1 = fieldClass->CoordinateFourDeckShip[i + 3];
+
+		if (fieldClass->fieldUser[xTemp_1][yTemp_1] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_2 = fieldClass->CoordinateFourDeckShip[i + 4];
+		int xTemp_2 = fieldClass->CoordinateFourDeckShip[i + 5];
+
+		if (fieldClass->fieldUser[xTemp_2][yTemp_2] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		int yTemp_3 = fieldClass->CoordinateFourDeckShip[i + 6];
+		int xTemp_3 = fieldClass->CoordinateFourDeckShip[i + 7];
+
+		if (fieldClass->fieldUser[xTemp_3][yTemp_3] == 'X')
+		{
+			flagDestroyShip++;
+		}
+
+		if (flagDestroyShip == 4)
+		{
+			CheckÑondition(y, x, fieldClass->fieldUser);
+			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
+			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldUser);
+			CheckÑondition(yTemp_3, xTemp_3, fieldClass->fieldUser);
+		}
+	}
 	return 0;
 }
 
@@ -123,7 +304,7 @@ bool Move::MoveUser(int x, int y, Field* fieldClass)
 {
 	--x;
 	--y;
-	CheckKillShipEnemy(fieldClass);
+	
 	if (x > SIZE_FIELD || x < 0 || y > SIZE_FIELD || y < 0) 
 	{
 		system("cls");
@@ -159,7 +340,7 @@ bool Move::MoveUser(int x, int y, Field* fieldClass)
 bool Move::MoveComputer(Field* fieldClass)
 {
 	bool attak = 0;
-	CheckKillShipUser(fieldClass);
+
 	while (attak == 0)
 	{
 		int X_TEMP = rand() % 10;
@@ -181,7 +362,7 @@ bool Move::MoveComputer(Field* fieldClass)
 				Y_TEMP = rand() % Y_TEMP + 2 + Y_TEMP - 1;
 				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
 					fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
-					//CheckKillShipUser(fieldClass);
+					CheckKillShipUser(fieldClass);
 					attak_ship = 1;
 				}
 				else {
@@ -192,7 +373,41 @@ bool Move::MoveComputer(Field* fieldClass)
 			}
 		}
 	}
+	CheckKillShipUser(fieldClass);
 	return true;
+}
+
+bool Move::CheckVictory(Field* fieldClass)
+{
+	int flag = 0;
+	int humanFlag = 0;
+	int computerFlag = 0;
+	for (int i = 0; i<10; i++)
+	{
+		for (int j = 0; j<10; j++)
+		{
+			if (fieldClass->fieldUser[i][j] == '#')
+				humanFlag = 1; // User have ship
+			if (fieldClass->fieldEnemy[i][j] == '#')
+				computerFlag = 1; // Computer opponent have ship
+		}
+	}
+	if (humanFlag == 0)
+		flag = 2;
+	if (computerFlag == 0)
+		flag = 1;
+	if (flag == 1)
+	{
+		std::cout << "You win!\n";
+		return true;
+	}
+
+	if (flag == 2)
+	{
+		std::cout << "Computer win!\n";
+		return true;
+	}
+	return false;
 }
 
 Move::~Move()
