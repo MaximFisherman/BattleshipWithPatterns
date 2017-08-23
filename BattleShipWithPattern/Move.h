@@ -9,10 +9,10 @@ public:
 	template<typename FieldType>
 	void Check—ondition(int x, int y, FieldType field[][SIZE_FIELD]);
 	
-	bool CheckVictory(Field* field);
+	bool CheckVictory(Field* fieldClass);
 	
-	bool CheckKillShipEnemy(Field* field);
-	bool CheckKillShipUser(Field* field);
+	bool CheckKillShipEnemy(Field* fieldClass);
+	bool CheckKillShipUser(Field* fieldClass);
 	bool MoveUser(int x, int y, Field* fieldClass);
 	bool MoveComputer(Field* fieldClass);
 	~Move();

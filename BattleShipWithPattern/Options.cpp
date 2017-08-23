@@ -299,25 +299,6 @@ void Options::ViewStatistic(Field* field)
 	}
 }
 
-bool Options::Replay()
-{
-	int action = 0;
-
-	cout << "Do you replay ?" << endl;
-	cout << "press 1 for replay and press 2 for stop game and exit" << endl;
-
-	cin >> action;
-	if (action == 1)
-	{
-		return true;
-	}
-
-	if (action == 2)
-	{
-		return false;
-	}
-}
-
 void Options::Pause()
 {
 	system("cls");
