@@ -35,6 +35,36 @@ Field::Field()
 	}
 }
 
+void Field::clear()
+{
+	//Initialization fieldUser
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			fieldUser[i][j] = '*';
+		}
+	}
+
+	//Initialization fieldEnemy
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			fieldEnemy[i][j] = '*';
+		}
+	}
+
+	//Initialization hiddenFieldEnemy
+	for (int i = 0; i < SIZE_FIELD; i++)
+	{
+		for (int j = 0; j < SIZE_FIELD; j++)
+		{
+			hiddenFieldEnemy[i][j] = '0';
+		}
+	}
+}
+
 void Field::shipArrangement()
 {
 	current = new SetFourDeckShip(this);

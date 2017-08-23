@@ -398,13 +398,13 @@ bool Move::CheckVictory(Field* fieldClass)
 		flag = 1;
 	if (flag == 1)
 	{
-		std::cout << "You win!\n";
+		cout << "You win!\n";
 		return true;
 	}
 
 	if (flag == 2)
 	{
-		std::cout << "Computer win!\n";
+		cout << "Computer win!\n";
 		return true;
 	}
 	return false;

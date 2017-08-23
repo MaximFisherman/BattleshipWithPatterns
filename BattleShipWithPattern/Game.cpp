@@ -22,6 +22,7 @@ void Game::Run()
 	{
 		if (countIteration == 0)
 		{
+			field.clear();
 			field.shipArrangement();
 		}
 		system("cls");
@@ -34,6 +35,8 @@ void Game::Run()
 		
 		cout << "Input 1 for attak, input 2 for pause, input 3 for view statistic " << endl;
 			cin >> action;
+
+		countIteration++;
 
 		if (action == 1)
 		{
@@ -51,7 +54,20 @@ void Game::Run()
 			{
 				move.MoveComputer(&field);
 			}
-			move.CheckVictory(&field);
+
+			if (move.CheckVictory(&field))
+			{
+				int actionFinishGame = 0;
+
+				cout << "for replay game please press 1 and for stop game press 2" << endl;
+				cin >> actionFinishGame;
+
+				if (actionFinishGame == 1)
+					countIteration = 0;
+
+				if (actionFinishGame == 2)
+					break;
+			}
 		}
 			
 		if (action == 2)
@@ -63,8 +79,6 @@ void Game::Run()
 		{
 			options.ViewStatistic(&field);
 		}
-
-		countIteration++;
 	}
 }
 

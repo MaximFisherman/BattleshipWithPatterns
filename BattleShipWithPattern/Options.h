@@ -7,6 +7,7 @@ class Options
 public:
 	Options();
 	void Pause();
+	bool Replay();
 	void CalculateStatisticEnemy(
 		Field* fieldClass,
 		int* countSingleDeckShip,

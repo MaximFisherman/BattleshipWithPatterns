@@ -299,6 +299,25 @@ void Options::ViewStatistic(Field* field)
 	}
 }
 
+bool Options::Replay()
+{
+	int action = 0;
+
+	cout << "Do you replay ?" << endl;
+	cout << "press 1 for replay and press 2 for stop game and exit" << endl;
+
+	cin >> action;
+	if (action == 1)
+	{
+		return true;
+	}
+
+	if (action == 2)
+	{
+		return false;
+	}
+}
+
 void Options::Pause()
 {
 	system("cls");
@@ -307,7 +326,7 @@ void Options::Pause()
 		cout << "For exit from the pause menu, please press Backspace button on your keyboard" << endl;
 		Sleep(1000);
 
-			if (GetAsyncKeyState(VK_BACK)) break;//Exit loop left shift
+			if (GetAsyncKeyState(VK_BACK)) break;//Exit loop backspase
 			
 			system("cls");
 			time_t seconds = time(NULL);

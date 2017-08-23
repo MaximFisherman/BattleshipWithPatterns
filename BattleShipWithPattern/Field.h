@@ -36,6 +36,7 @@ public:
 	void ViewHiddenFieldEnemy();
 
 	void shipArrangement();
-
+	
+	void clear();
 	virtual ~Field();
 };
