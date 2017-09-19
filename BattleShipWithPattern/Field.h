@@ -7,7 +7,6 @@ using namespace std;
 class Field
 {
 	class StateField *current;
-
 public:
 	Field();
 	char fieldUser[SIZE_FIELD][SIZE_FIELD];

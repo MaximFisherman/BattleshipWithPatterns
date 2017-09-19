@@ -18,6 +18,10 @@
 #include <vector>
 #include <ctime>
 #include <conio.h>
+#include <string>
+#include <future>
+#include <thread>
+#include <chrono>
 #include "GlobalVariables.h"
 
 

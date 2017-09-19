@@ -7,8 +7,8 @@ Move::Move()
 {
 }
 
-template<typename FieldType>
-void Move::Check—ondition(int x, int y, FieldType field[SIZE_FIELD][SIZE_FIELD])
+template<class T>
+void Move::Check—ondition(int x, int y, T field[SIZE_FIELD][SIZE_FIELD])
 {
 	if (!((y - 1) < 0) && field[y - 1][x] != 'X')
 		field[y - 1][x] = '$';
