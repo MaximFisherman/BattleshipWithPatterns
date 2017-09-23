@@ -5,6 +5,7 @@
 
 Move::Move()
 {
+	killShip = 0;
 }
 
 template<class T>
@@ -183,6 +184,7 @@ bool Move::CheckKillShipUser(Field* fieldClass)
 		if (fieldClass->fieldUser[y][x] == 'X')
 		{
 			CheckÑondition(x, y, fieldClass->fieldUser);
+			return true;
 		}
 	}
 
@@ -212,6 +214,7 @@ bool Move::CheckKillShipUser(Field* fieldClass)
 		{
 			CheckÑondition(y, x, fieldClass->fieldUser);
 			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
+			return true;
 		}
 	}
 
@@ -249,6 +252,7 @@ bool Move::CheckKillShipUser(Field* fieldClass)
 			CheckÑondition(y, x, fieldClass->fieldUser);
 			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
 			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldUser);
+			return true;
 		}
 	}
 
@@ -295,9 +299,10 @@ bool Move::CheckKillShipUser(Field* fieldClass)
 			CheckÑondition(yTemp_1, xTemp_1, fieldClass->fieldUser);
 			CheckÑondition(yTemp_2, xTemp_2, fieldClass->fieldUser);
 			CheckÑondition(yTemp_3, xTemp_3, fieldClass->fieldUser);
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 bool Move::MoveUser(int x, int y, Field* fieldClass)
@@ -340,38 +345,94 @@ bool Move::MoveUser(int x, int y, Field* fieldClass)
 bool Move::MoveComputer(Field* fieldClass)
 {
 	bool attak = 0;
-
+	/*Need check method CheckKillShipUser becouse take not well value when kill one ship, him return true always */
+	
 	while (attak == 0)
 	{
+		
 		int X_TEMP = rand() % 10;
 		int Y_TEMP = rand() % 10;
-		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '$') attak = 1;
-		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == 'X') attak = 1;
-		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '*') {
-			attak = 0;
-			fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
-			break;
-		}
 
+		static int X_TEMP_DESTROY_SHIP;
+		static int Y_TEMP_DESTROY_SHIP;
 		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
+			X_TEMP_DESTROY_SHIP = X_TEMP;
+			Y_TEMP_DESTROY_SHIP = Y_TEMP;
 			fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
-			bool attak_ship = 1;
-			while (attak_ship == 0)
+			if (CheckKillShipUser(fieldClass))
 			{
-				X_TEMP = rand() % X_TEMP + 2 + X_TEMP - 1;
-				Y_TEMP = rand() % Y_TEMP + 2 + Y_TEMP - 1;
-				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
-					fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
-					CheckKillShipUser(fieldClass);
-					attak_ship = 1;
-				}
-				else {
-					fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
-					attak_ship = 0; break;
-				}
-				attak = 0;
+				attak = 1;
+				killShip = 0;
+			}
+			else
+			{
+				killShip = 1;
 			}
 		}
+
+
+			cout << killShip << endl; system("pause");//Debug
+			
+			//If you Attack ship and hit ship
+			if (killShip == 0) {
+				
+				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '$') attak = 1;
+				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == 'X') attak = 1;
+				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '*') {
+					attak = 0;
+					fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
+					break;
+				}
+			}
+			else {
+				X_TEMP_DESTROY_SHIP = rand() % X_TEMP_DESTROY_SHIP + 1 + X_TEMP_DESTROY_SHIP - 1;
+				Y_TEMP_DESTROY_SHIP = rand() % Y_TEMP_DESTROY_SHIP + 1 + Y_TEMP_DESTROY_SHIP - 1;
+				cout <<" X temp destroy" << X_TEMP_DESTROY_SHIP << endl; system("pause");//Debug
+				cout <<" y temp destroy" << X_TEMP_DESTROY_SHIP << endl; system("pause");//Debug
+				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '$') attak = 1;
+				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == 'X') attak = 1;
+				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '*') {
+					attak = 0;
+					fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] = '$';
+					break;
+				}
+
+				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '#') {
+					X_TEMP_DESTROY_SHIP = X_TEMP_DESTROY_SHIP;
+					Y_TEMP_DESTROY_SHIP = Y_TEMP_DESTROY_SHIP;
+					fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] = 'X';
+					if (CheckKillShipUser(fieldClass))
+					{
+						attak = 1;
+						killShip = 0;
+					}
+					else
+					{
+						killShip = 1;
+					}
+
+				}
+			}
+
+			/*
+
+				bool attak_ship = 1;
+				while (attak == 0)
+				{
+
+					if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
+						fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
+
+						attak_ship = 1;
+					}
+					else {
+						fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
+						attak_ship = 0; break;
+					}
+					attak = 0;
+				}
+			}*/
+		
 	}
 	CheckKillShipUser(fieldClass);
 	return true;

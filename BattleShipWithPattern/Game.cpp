@@ -32,7 +32,7 @@ void Game::Run()
 			field.ViewFieldUser();
 		cout << "Field your opponent" << endl;
 			field.ViewHiddenFieldEnemy();
-		
+
 		cout << "Input 1 for attak, input 2 for pause, input 3 for view statistic " << endl;
 			cin >> action;
 

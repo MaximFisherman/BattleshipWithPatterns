@@ -3,6 +3,8 @@
 
 class Move
 {
+private:
+	bool killShip; //Variable for check kill ship to alhoritm AI. 0 - move, 1 - check kill ship
 public:
 	Move();
 
