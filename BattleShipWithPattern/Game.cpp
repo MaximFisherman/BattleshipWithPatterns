@@ -8,7 +8,7 @@ Game::Game()
 
 void Game::Run()
 {
-	Field field;
+	Field& field = Field::Instance();
 	Move move;
 	Options options;
 

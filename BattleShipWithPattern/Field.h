@@ -3,12 +3,22 @@
 #include "StateField.h"
 
 using namespace std;
+/*This class is Singleton Myersa*/
 
 class Field
 {
 	class StateField *current;
-public:
+private: 
+	Field(Field const&) = delete; //The implementation is not needed
+	Field& operator= (Field const&) = delete;  //The implementation is not needed
 	Field();
+   ~Field();
+
+public:
+	
+
+	static Field& Instance();
+
 	char fieldUser[SIZE_FIELD][SIZE_FIELD];
 	char fieldEnemy[SIZE_FIELD][SIZE_FIELD];
 	char hiddenFieldEnemy[SIZE_FIELD][SIZE_FIELD];
@@ -37,5 +47,4 @@ public:
 	void shipArrangement();
 	
 	void clear();
-	virtual ~Field();
 };

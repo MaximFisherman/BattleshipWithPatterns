@@ -4,7 +4,6 @@
 #include "Options.h"
 
 class Game :
-	public Field,
 	public Move,
 	public Options
 {

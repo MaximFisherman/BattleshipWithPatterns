@@ -7,6 +7,7 @@
 
 Field::Field()
 {
+	
 	//Initialization fieldUser
 	for (int i = 0; i < SIZE_FIELD; i++)
 	{
@@ -63,6 +64,12 @@ void Field::clear()
 			hiddenFieldEnemy[i][j] = '0';
 		}
 	}
+}
+
+Field& Field::Instance()
+{
+	static Field field;
+	return field;
 }
 
 void Field::shipArrangement()
