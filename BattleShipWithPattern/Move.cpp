@@ -353,86 +353,132 @@ bool Move::MoveComputer(Field* fieldClass)
 		int X_TEMP = rand() % 10;
 		int Y_TEMP = rand() % 10;
 
-		static int X_TEMP_DESTROY_SHIP;
-		static int Y_TEMP_DESTROY_SHIP;
-		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
-			X_TEMP_DESTROY_SHIP = X_TEMP;
-			Y_TEMP_DESTROY_SHIP = Y_TEMP;
-			fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
-			if (CheckKillShipUser(fieldClass))
-			{
-				attak = 1;
-				killShip = 0;
-			}
-			else
-			{
-				killShip = 1;
-			}
+		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '$') attak = 1;
+		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == 'X') attak = 1;
+		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '*') {
+			attak = 0;
+			fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
+			break;
 		}
 
-
-			cout << killShip << endl; system("pause");//Debug
-			
-			//If you Attack ship and hit ship
-			if (killShip == 0) {
-				
-				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '$') attak = 1;
-				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == 'X') attak = 1;
-				if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '*') {
-					attak = 0;
-					fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
-					break;
-				}
-			}
-			else {
-				X_TEMP_DESTROY_SHIP = rand() % X_TEMP_DESTROY_SHIP + 1 + X_TEMP_DESTROY_SHIP - 1;
-				Y_TEMP_DESTROY_SHIP = rand() % Y_TEMP_DESTROY_SHIP + 1 + Y_TEMP_DESTROY_SHIP - 1;
-				cout <<" X temp destroy" << X_TEMP_DESTROY_SHIP << endl; system("pause");//Debug
-				cout <<" y temp destroy" << X_TEMP_DESTROY_SHIP << endl; system("pause");//Debug
-				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '$') attak = 1;
-				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == 'X') attak = 1;
-				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '*') {
-					attak = 0;
-					fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] = '$';
-					break;
-				}
-
-				if (fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] == '#') {
-					X_TEMP_DESTROY_SHIP = X_TEMP_DESTROY_SHIP;
-					Y_TEMP_DESTROY_SHIP = Y_TEMP_DESTROY_SHIP;
-					fieldClass->fieldUser[Y_TEMP_DESTROY_SHIP][X_TEMP_DESTROY_SHIP] = 'X';
-					if (CheckKillShipUser(fieldClass))
-					{
-						attak = 1;
-						killShip = 0;
-					}
-					else
-					{
-						killShip = 1;
-					}
-
-				}
-			}
-
-			/*
-
-				bool attak_ship = 1;
-				while (attak == 0)
-				{
-
-					if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
-						fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
-
-						attak_ship = 1;
-					}
-					else {
-						fieldClass->fieldUser[Y_TEMP][X_TEMP] = '$';
-						attak_ship = 0; break;
-					}
-					attak = 0;
-				}
-			}*/
 		
+
+		if (fieldClass->fieldUser[Y_TEMP][X_TEMP] == '#') {
+			attak = 1;
+			fieldClass->fieldUser[Y_TEMP][X_TEMP] = 'X';
+		}
+
+		//Check hit four deck ship for destroy 
+			for (int i = 0; i < fieldClass->CoordinateFourDeckShip.size(); i += 8)
+			{
+				int flagDestroyShip = 0;
+
+				int y = fieldClass->CoordinateFourDeckShip[i];
+				int x = fieldClass->CoordinateFourDeckShip[i + 1];
+
+				if (fieldClass->fieldUser[x][y] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				int yTemp_1 = fieldClass->CoordinateFourDeckShip[i + 2];
+				int xTemp_1 = fieldClass->CoordinateFourDeckShip[i + 3];
+
+				if (fieldClass->fieldUser[xTemp_1][yTemp_1] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				int yTemp_2 = fieldClass->CoordinateFourDeckShip[i + 4];
+				int xTemp_2 = fieldClass->CoordinateFourDeckShip[i + 5];
+
+				if (fieldClass->fieldUser[xTemp_2][yTemp_2] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				int yTemp_3 = fieldClass->CoordinateFourDeckShip[i + 6];
+				int xTemp_3 = fieldClass->CoordinateFourDeckShip[i + 7];
+
+				if (fieldClass->fieldUser[xTemp_3][yTemp_3] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				if (flagDestroyShip == 1)
+				{
+					fieldClass->fieldUser[fieldClass->CoordinateFourDeckShip[i + 1]][fieldClass->CoordinateFourDeckShip[i]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateFourDeckShip[i + 3]][fieldClass->CoordinateFourDeckShip[i + 2]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateFourDeckShip[i + 5]][fieldClass->CoordinateFourDeckShip[i + 4]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateFourDeckShip[i + 7]][fieldClass->CoordinateFourDeckShip[i + 6]] = 'X';
+				}
+			}
+
+			//Check three deck ship for destroy
+			for (int i = 0; i < fieldClass->CoordinateThreeDeckShip.size(); i += 6)
+			{
+				int flagDestroyShip = 0;
+
+				int y = fieldClass->CoordinateThreeDeckShip[i];
+				int x = fieldClass->CoordinateThreeDeckShip[i + 1];
+
+				if (fieldClass->fieldUser[x][y] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				int yTemp_1 = fieldClass->CoordinateThreeDeckShip[i + 2];
+				int xTemp_1 = fieldClass->CoordinateThreeDeckShip[i + 3];
+
+				if (fieldClass->fieldUser[xTemp_1][yTemp_1] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				int yTemp_2 = fieldClass->CoordinateThreeDeckShip[i + 4];
+				int xTemp_2 = fieldClass->CoordinateThreeDeckShip[i + 5];
+
+				if (fieldClass->fieldUser[xTemp_2][yTemp_2] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				if (flagDestroyShip == 1)
+				{
+					fieldClass->fieldUser[fieldClass->CoordinateThreeDeckShip[i + 1]][fieldClass->CoordinateThreeDeckShip[i]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateThreeDeckShip[i + 3]][fieldClass->CoordinateThreeDeckShip[i + 2]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateThreeDeckShip[i + 5]][fieldClass->CoordinateThreeDeckShip[i + 4]] = 'X';				
+				}
+			}
+
+			//Check Double deck ship for destroy
+			for (int i = 0; i < fieldClass->CoordinateDoubleDeckShip.size(); i += 4)
+			{
+				int flagDestroyShip = 0;
+
+				int y = fieldClass->CoordinateDoubleDeckShip[i];
+				int x = fieldClass->CoordinateDoubleDeckShip[i + 1];
+
+				if (fieldClass->fieldUser[x][y] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+
+				int yTemp_1 = fieldClass->CoordinateDoubleDeckShip[i + 2];
+				int xTemp_1 = fieldClass->CoordinateDoubleDeckShip[i + 3];
+
+				if (fieldClass->fieldUser[xTemp_1][yTemp_1] == 'X')
+				{
+					flagDestroyShip++;
+				}
+
+				if (flagDestroyShip == 1)
+				{
+					fieldClass->fieldUser[fieldClass->CoordinateDoubleDeckShip[i + 1]][fieldClass->CoordinateDoubleDeckShip[i]] = 'X';
+					fieldClass->fieldUser[fieldClass->CoordinateDoubleDeckShip[i + 3]][fieldClass->CoordinateDoubleDeckShip[i + 2]] = 'X';
+				}
+			}
 	}
 	CheckKillShipUser(fieldClass);
 	return true;
